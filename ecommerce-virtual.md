@@ -42,6 +42,12 @@
             postgress[(postgress)]
         end
 
+        subgraph Kafka Zone
+            orders-topic
+            delivery-topic
+            transactions-topic
+        end
+
         user --> api-gateway
 
         api-gateway --> auth-server
@@ -67,5 +73,7 @@
         order-service --> payment-service
 
         payment-service --> delivery-service
+
+        mailtrap-service --> user
 
 ```
