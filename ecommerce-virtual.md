@@ -45,10 +45,7 @@
         user --> api-gateway
 
         api-gateway --> auth-server
-        auth-server --> api-gateway
-
-        api-gateway --> product-service
-        product-service --> api-gateway
+        auth-server --> api-gateway        
 
         payment-service --> stripe-service
         stripe-service --> payment-service
@@ -61,5 +58,14 @@
 
         order-service --> postgress
         postgress --> order-service
+
+        api-gateway --> product-service
+        product-service --> api-gateway
+
+        product-service --> order-service
+
+        order-service --> payment-service
+
+        payment-service --> delivery-service
 
 ```
