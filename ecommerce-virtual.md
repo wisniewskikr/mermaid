@@ -43,7 +43,7 @@
         end
 
         subgraph Kafka Zone
-            orders-topic
+            order-topic
             delivery-topic
             transactions-topic
         end
@@ -76,7 +76,7 @@
 
         mailtrap-service --> user
 
-        order-service .-> orders-topic .-> notification-service 
+        order-service .-> order-topic .-> notification-service 
 
         delivery-service .-> delivery-topic .-> notification-service 
 
