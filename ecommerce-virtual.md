@@ -74,12 +74,12 @@
         api-gateway --> order-service
         order-service --> api-gateway
 
-        product-service --> order-service
-        order-service --> product-service
+        product-service -->|circuit breaker| order-service
+        order-service -->|circuit breaker| product-service
 
-        order-service --> payment-service
+        order-service -->|circuit breaker| payment-service
 
-        payment-service --> delivery-service
+        payment-service -->|circuit breaker| delivery-service
 
         mailtrap-service --> user
 
@@ -93,7 +93,7 @@
         payment-service .-> transactions-topic
         transactions-topic .-> payment-service
 
-        payment-service --> order-service
-        delivery-service --> order-service
+        payment-service -->|circuit breaker| order-service
+        delivery-service -->|circuit breaker| order-service
 
 ```
