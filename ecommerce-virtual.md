@@ -15,7 +15,7 @@
             order-service
             payment-service
             delivery-service
-            notification-service
+            notification-service            
         end
 
         subgraph Infrastructure Zone           
@@ -37,6 +37,11 @@
             stripe-service
         end
 
+        subgraph Database Zone
+            mongo[(mongo)]
+            postgress[(postgress)]
+        end
+
         user --> api-gateway
 
         api-gateway --> auth-server
@@ -50,5 +55,11 @@
 
         notification-service --> mailtrap-service
         mailtrap-service --> notification-service
+
+        product-service --> mongo
+        mongo --> product-service
+
+        order-service --> postgress
+        postgress --> order-service
 
 ```
