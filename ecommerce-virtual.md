@@ -6,8 +6,8 @@
         end
 
         subgraph Gateway Zone
-            api-gateway
-            auth-server
+            api-gateway["api-gateway (port: 8080)"]
+            auth-server["auth-server (port: 9090)"]
         end
         
         subgraph Services Zone
@@ -19,14 +19,14 @@
         end
 
         subgraph Infrastructure Zone           
-            discovery-service
-            config-server            
+            discovery-service["discovery-service (port: 8761)"] 
+            config-server["config-server (port: 8888)"]            
         end
 
-        subgraph Observability Zone
+        subgraph Observability Zone["Observability Zone (port: 3000)"]
             grafana-loki
             grafana-tempo
-            grafana-prometheus 
+            grafana-prometheus  
         end
 
         subgraph Mailing Zone
