@@ -20,7 +20,7 @@
         end
 
         subgraph Infrastructure Zone           
-            discovery-service["discovery-service (port: 8761)"] 
+            discovery-server["discovery-server (port: 8761)"] 
             config-server["config-server (port: 8888)"]            
         end
 
