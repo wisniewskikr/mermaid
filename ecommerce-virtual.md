@@ -11,11 +11,11 @@
         end
         
         subgraph Services Zone
-            product-service
-            order-service
-            payment-service
-            delivery-service
-            notification-service            
+            product-service["product-service (port: 8081)"]
+            order-service["order-service (port: 8082)"]
+            payment-service["payment-service (port: 8083)"]
+            delivery-service["delivery-service (port: 8084)"]
+            notification-service["notification-service (port: 8085)"]            
         end
 
         subgraph Infrastructure Zone           
@@ -92,5 +92,8 @@
 
         payment-service .-> transactions-topic
         transactions-topic .-> payment-service
+
+        payment-service --> order-service
+        delivery-service --> order-service
 
 ```
