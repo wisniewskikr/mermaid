@@ -37,8 +37,11 @@
             stripe-service
         end
 
-        subgraph Database Zone
+        subgraph Database NoSql Zone
             mongo[(mongo)]
+        end
+
+        subgraph Database Sql Zone
             postgress[(postgress)]
         end
 
@@ -68,7 +71,11 @@
         api-gateway --> product-service
         product-service --> api-gateway
 
+        api-gateway --> order-service
+        order-service --> api-gateway
+
         product-service --> order-service
+        order-service --> product-service
 
         order-service --> payment-service
 
@@ -79,5 +86,11 @@
         order-service .-> order-topic .-> notification-service 
 
         delivery-service .-> delivery-topic .-> notification-service 
+
+        order-service .-> transactions-topic
+        transactions-topic .-> order-service
+
+        payment-service .-> transactions-topic
+        transactions-topic .-> payment-service
 
 ```
