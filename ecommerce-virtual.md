@@ -38,14 +38,14 @@
         end
 
         subgraph Database NoSql Zone
-            mongo[(mongo)]
+            mongo[(mongo port: 27017)]
         end
 
         subgraph Database Sql Zone
-            postgress[(postgress)]
+            postgress[(postgress port: 5432)]
         end
 
-        subgraph Kafka Zone
+        subgraph Kafka Zone["Kafka Zone (port: 9092)"]
             order-topic
             delivery-topic
             transactions-topic
