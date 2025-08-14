@@ -3,6 +3,7 @@
 
         subgraph Internet Zone
             user
+            admin
         end
 
         subgraph Gateway Zone
@@ -52,6 +53,7 @@
         end
 
         user --> api-gateway
+        admin --> api-gateway
 
         api-gateway --> auth-server
         auth-server --> api-gateway        
@@ -68,11 +70,11 @@
         order-service --> postgress
         postgress --> order-service
 
-        api-gateway --> product-service
-        product-service --> api-gateway
+        api-gateway -->|admin| product-service
+        product-service -->|admin| api-gateway
 
-        api-gateway --> order-service
-        order-service --> api-gateway
+        api-gateway -->|user| order-service
+        order-service -->|user| api-gateway
 
         product-service -->|circuit breaker| order-service
         order-service -->|circuit breaker| product-service
