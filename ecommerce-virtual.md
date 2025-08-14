@@ -76,4 +76,8 @@
 
         mailtrap-service --> user
 
+        order-service .-> orders-topic .-> notification-service 
+
+        delivery-service .-> delivery-topic .-> notification-service 
+
 ```
